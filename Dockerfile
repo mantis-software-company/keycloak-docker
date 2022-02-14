@@ -1,2 +1,4 @@
 FROM docker.io/jboss/keycloak:15.0.1
-COPY ./recaptcha-login.jar /opt/jboss/keycloak/standalone/deployments/recaptcha-login.jar
+ARG keycloak_version
+RUN wget -O "/opt/jboss/keycloak/standalone/deployments/recaptcha-login.jar" "https://s01.oss.sonatype.org/service/local/repositories/releases/content/tr/com/mantis/keycloak/recaptcha-login-provider/$keycloak_version/recaptcha-login-provider-$keycloak_version.jar"
+
